@@ -10,22 +10,24 @@ int main()
 {
     char *locale = setlocale(LC_ALL, "En-GB");
 
-    unsigned long int num, nLine = 0Ul, SumOfn;
+          uint32_t Number = {0UL}, type;
 
-    printf("Input a digit: \n");
+     float Array[5UL];
 
-    scanf("%lu", &num);
+     while(Number <= *Array)
+     {
+        scanf("%lu", &Array[Number]);
 
-    for(unsigned long int n = 0UL; n < num - 1UL; ++n)
-    {
-        for(nLine = 1UL; nLine < num - 1UL; ++nLine)
+        ++type;
+     }
+     for(uint32_t j = 0UL; j < Number; ++j)
+     {
+        if(Array[j] < 5UL)
         {
-            SumOfn += ((2UL * (n + SumOfn)) - 1UL);
-
-            printf("Output: %lu;\n", SumOfn);
+            printf("The index, [%lu] and its number: %lu\n", j, Array[j]);
         }
-        printf("\n");
-    }
+        printf("Output: %lu - [%lu];\n", j, Array[j]);
+     }
 
     return 0ULL;
 }
