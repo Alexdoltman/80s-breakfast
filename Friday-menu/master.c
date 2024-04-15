@@ -14,11 +14,11 @@ int main()
 
      float Array[5UL];
 
-     while(Number <= *Array)
+     while(Number < 5UL)
      {
-        scanf("%lu", &Array[Number]);
+        scanf("%lu", &Array[type]);
 
-        ++type;
+        ++Number;
      }
      for(uint32_t j = 0UL; j < Number; ++j)
      {
