@@ -49,8 +49,10 @@ int main()
                     Sum += ((Index ^ 0b11UL) & 10UL) + (Array[Pos] % Index) - 1UL;
                 }
 
+                Index >= 65536UL? ((Index & 0xffffUL) & 0b1111111111111111UL) + 1UL: (Index += 2UL) & 0b10UL;
 
-                printf("Output:\nThe sum is: %lu;\nThe index is: %lu;\n The prefix is: %lu;\n The prefix two is: %lu;\n The \'random\' digit is: %lu\n", Sum, ++Index, ++prefEin, (Sum ^ (prefEin - prefTwo) % Index), ++prefTwo);
+
+                printf("Output:\nThe sum is: %lu;\nThe index is: %lu;\n The prefix is: %lu;\n The prefix two is: %lu;\n The \'random\' digit is: %lu\n", Sum, ++Index, ++prefEin, (Sum ^ (prefEin + prefTwo) % Index), ++prefTwo);
             }
             printf("\n");
 
@@ -92,13 +94,13 @@ int main()
 
             ++Index;
 
-            Sum += ((Array[Pos] % Index) % (2UL * Second));
+            Sum += ((Array[Pos] % Index) % (2UL ^ Second));
 
-            printf("Output:\nThe summation is: %lu.\n", Sum % 1024UL);
+            printf("Output:\nThe summation is: %lu.\n", (Sum & 1024UL) | 0x10fffUL);
         }
 
         ++Index;
     }
-
+    printf("Output:\nThe summation is: %lu.\n", Sum);
      return 0ULL;
 }
