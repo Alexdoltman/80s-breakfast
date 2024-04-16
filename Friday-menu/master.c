@@ -40,11 +40,17 @@ int main()
 
                 prefTwo += ((digit & 10UL) % 10UL) + 10UL;
 
-                Sum += ((10UL|(Array[Pos - n] + prefEin)) / 10UL);
+                Sum += ((10UL|(Array[Pos] + prefEin)) / 10UL) + n;
 
                 Index += (Sum | (prefEin ^ prefTwo & 0x400UL) % 2UL);
 
-                printf("Output:\nThe sum is: %lu;\nThe index is: %lu;\n The prefix is: %lu;\n The prefix two is: %lu;\n The \'random\' digit is: %lu\n", ((Sum % 0b0111UL) & 0x20UL), ++Index, ++prefEin, (Sum ^ (prefEin - prefTwo) % Index), ++prefTwo);
+                if(Sum < Index)
+                {
+                    Sum += ((Index ^ 0b11UL) & 10UL) + (Array[Pos] % Index) - 1UL;
+                }
+
+
+                printf("Output:\nThe sum is: %lu;\nThe index is: %lu;\n The prefix is: %lu;\n The prefix two is: %lu;\n The \'random\' digit is: %lu\n", Sum, ++Index, ++prefEin, (Sum ^ (prefEin - prefTwo) % Index), ++prefTwo);
             }
             printf("\n");
 
@@ -52,11 +58,11 @@ int main()
 
         prefEin += ((Array[Pos + 1UL] % 10UL) & 10UL);
 
-        prefEin % 10UL == 0UL? prefTwo += ((Array[Pos - 1UL] << 3UL) % 10UL): 0UL;
+        prefEin % 10UL == 0UL? prefTwo += ((Array[Pos + 1UL] >> 1UL) % 10UL): 1UL;
 
         Sum += (((prefEin + prefTwo) | Array[Pos]) / 2UL);
 
-        printf("Your sum is: %lu;\n", ((Sum >> 10UL) + Index)); // Sum / 1,024UL.
+        printf("Your sum is: %lu;\n", (Sum & 2UL) + Index); // Sum / 1,024UL.
 
         while(Index <= Pos + 1UL) //while index is less than Pos + 1.
         {
@@ -86,7 +92,9 @@ int main()
 
             ++Index;
 
-            printf("Output: %lu;\n", ((Sum % 1024UL) & 0x64UL));
+            Sum += ((Array[Pos] % Index) % (2UL * Second));
+
+            printf("Output:\nThe summation is: %lu.\n", Sum % 1024UL);
         }
 
         ++Index;
