@@ -96,7 +96,7 @@ int main()
 
             Sum += ((Array[Pos] % Index) % (2UL ^ Second));
 
-            printf("Output:\nThe summation is: %lu.\n", (Sum & 1024UL) | 0x10fffUL);
+            printf("Output:\nThe summation is: %lu.\n", (Sum % 1024UL) >> 0x10UL);
         }
 
         ++Index;
