@@ -64,7 +64,7 @@ int main()
 
         Sum += (((prefEin + prefTwo) | Array[Pos]) / 2UL);
 
-        printf("Your sum is: %lu;\n", (Sum & 2UL) + Index); // Sum / 1,024UL.
+        printf("Your sum is: %lu;\n", (Sum & 2UL) % Index); // Sum / 1,024UL.
 
         while(Index <= Pos + 1UL) //while index is less than Pos + 1.
         {
