@@ -87,7 +87,7 @@ int main()
 
             if(Third > Sum)
             {
-                Sum += ((((Third >> 2UL) ^ 3UL) & 2UL) | (((Second >> 2UL) ^ 3UL) & 2UL));
+                Sum += ((((Third >> 2UL) | 3UL) & 0x2UL) | (((Second >> 2UL) ^ 3UL) & 2UL));
 
                 ++Sum;
             }
@@ -101,6 +101,6 @@ int main()
 
         ++Index;
     }
-    printf("Output:\nThe summation is: %lu.\n", Sum);
+    printf("Output:\nThe summation is: %lu.\n", Sum % 1024UL);
      return 0ULL;
 }
