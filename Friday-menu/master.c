@@ -83,7 +83,7 @@ int main()
 
             Second += (((Pos % 2UL) | 4UL) + (Array[Pos] | 10UL));
 
-            Third += ((First + Second) & Pos ^ 1UL) % Array[Pos];
+            Third += ((First + Second) & Pos ^ 1UL) & (Array[Pos] - 1UL);
 
             if(Third > Sum)
             {
