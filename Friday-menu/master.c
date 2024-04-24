@@ -87,7 +87,9 @@ int main()
 
             if(Third > Sum)
             {
-                Sum += ((((Third >> 2UL) ^ 3UL) & 2UL) | (((Second >> 2UL) ^ 3UL) & 2UL));
+                Sum += ((((Third >> 2UL) & 3UL) ^ 0x2UL) + (((Second >> 2UL) ^ 3UL) & 2UL));
+
+                Sum += (((Third % 10UL) + 10UL) / 10UL) % 10UL;
 
                 ++Sum;
             }
