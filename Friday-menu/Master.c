@@ -4,37 +4,37 @@
 
 #include <stdint.h>
 
+#include <stdbool.h>
+
 #include <locale.h>
 
 int main()
 {
     char *locale = setlocale(LC_ALL, "En-GB");
 
-    /* Задача: Для двух положительных чисел, введенных пользователем, 
-    необходимо напечатать в порядке возрастания все их общие делители
-    */
-    
-    uint16_t digit, number, counter = 0U, anotherCounter, remIn;
+    uint_fast32_t Number = 0UL, counter = 0U, I = 0U;
 
-    printf("Input two digit: ");
+    printf("input a digit: \n");
 
-    scanf("%hu", &digit);
+    scanf("%Lu", &Number);
 
-    scanf("%hu",&number);
-
-    // создаю цикл for.
-
-    for(counter = 1U, anotherCounter = 1U; counter <= digit && anotherCounter <= number; ++counter, ++anotherCounter)
+    for(I; I <= Number; ++I)
     {
-        if(digit % counter == 0U && (number % anotherCounter == 0U))
+        bool isPrime = 1UL;
+
+        for(counter = 2UL; counter <= I; ++counter)
         {
-            ++remIn;
-
-            printf("Output: %hu;\n", counter);
-
-            printf("\n\n Output: %hu;\n",anotherCounter);
+            if(I % counter == 0UL)
+            {
+                isPrime = 0UL;
+            }
+            
         }
+         if(isPrime == 1UL){
+                printf("The simple digits are: %lu\n", I);
+            }
     }
 
+   
      return 0ULL;
 }
