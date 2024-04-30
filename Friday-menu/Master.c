@@ -12,28 +12,31 @@ int main()
 {
     char *locale = setlocale(LC_ALL, "En-GB");
 
-    uint_fast32_t Number = 0UL, counter = 0U, I = 0U;
+    uint32_t digit;
 
-    printf("input a digit: \n");
+    printf("Input a digit: \n"); 
 
-    scanf("%Lu", &Number);
+    scanf("%lu", &digit);
 
-    for(I; I <= Number; ++I)
+    for(uint32_t m = 0UL; m < digit - 2UL; ++m)
     {
-        bool isPrime = 1UL;
-
-        for(counter = 2UL; counter <= I; ++counter)
+        for(uint32_t k = 0UL; k <= ((digit - m) / 2UL); ++k)
         {
-            if(I % counter == 0UL)
-            {
-                isPrime = 0UL;
-            }
-            
+            printf("*");
         }
-         if(isPrime == 1UL){
-                printf("The simple digits are: %lu\n", I);
-            }
+        printf("\n");
     }
+
+    printf("\n-----------------------------\n");
+
+    for(uint32_t m = digit; m > 0UL; --m){
+        for(uint32_t n = digit; 2U * n > 0UL; --n){
+            printf("*");
+        }
+        printf("\n");
+    }
+
+    
 
    
      return 0ULL;
