@@ -12,32 +12,21 @@ int main()
 {
     char *locale = setlocale(LC_ALL, "En-GB");
 
-     float Velocity, Timer, Angle;
+    uint32_t digit, Sum;
 
-     const float G = 10.0F;
+    uint32_t *F; // it is an array = F[x];
 
-     float a = 0.0f; // The alpha angle. 
+    printf("Input an amout of digits: \n");
 
-     printf("Input a V, time and an angle: \n");
+    scanf("%lu",&digit);
 
-     scanf("%f",&Velocity);
+    F[digit];
 
-     scanf("%f",&Timer);
-
-     scanf("%f", Angle);
-
-     printf("Your speed in km/h is: %0.1f\n, Your time  is in seconds: %0.2f,\n and your angle is in degree: %0.3f.\n", Velocity, Timer, Angle);
-
-     if(fabs(a =(G * Timer) / 2.0f * Velocity) < 0.0f) 
-     {
-
-        float Result = asin((G * Timer) / 2.0f * Velocity);
-
-        float Change = ((Result *90.0F) / 3.140F);
-
-        a = Change;
-
-        printf("The angle is: %0.1f degrees\n", a);
-     }
+    for(uint32_t n = 1ul; n < digit + 1ul; ++n)
+    {
+        Sum += F[Sum - 1ul] += F[digit - 2UL];
+    }
+    printf("Output: %lu.\n", Sum);
+     
      return 0ULL;
 }
