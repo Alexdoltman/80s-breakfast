@@ -12,77 +12,32 @@ int main()
 {
     char *locale = setlocale(LC_ALL, "En-GB");
 
-    /*
-        Задача: Дано целое число k (1 ≤ k ≤ 365). Присвоить целочисленной величине n значение 1, 2, ..., 6 или 0 в зависимости от того, на какой день недели (понедельник, 
- 
-12 Глава 2
-вторник, ..., субботу или воскресенье) приходится k-й день года, в котором 
-1 января:
-а) понедельник;
-б) вторник;
-в)* d-й день недели (если 1 января— понедельник, то 
-d 1
-, если вторник —
-d 2 , ..., если воскресенье — d 7
-).
-    */
+     float Velocity, Timer, Angle;
 
-   uint16_t n, // от французского слова numéro, то есть номер
-            k; // это целое число.
-    
-    printf("Input a digit: ");
+     const float G = 10.0F;
 
-    scanf("%hu", &k);
+     float a = 0.0f; // The alpha angle. 
 
-    if(k >= 1U && k <= 365U)
-    {
-        n += k % 7U;
+     printf("Input a V, time and an angle: \n");
 
-        if((k % 7U) >= 1U && (k % 7U) <= 7U)
-        {
-           switch(n)
-           {
-            case 1U:
-                printf("The Monday!\n And its number is %hu\n", n);
-                return 0U;
-                break;
+     scanf("%f",&Velocity);
 
-                case 2U:
-                printf("The Tuesday!\nAnd its number is %hu\n",n);
-                break;
+     scanf("%f",&Timer);
 
-                case 3U:
-                printf("The Wednesday!\nAnd it's number is %hu\n",n);
-                break;
+     scanf("%f", Angle);
 
-                case 4U:
-                printf("The Thirsday!\nAnd it's number is %hu\n",n);
-                break;
+     printf("Your speed in km/h is: %0.1f\n, Your time  is in seconds: %0.2f,\n and your angle is in degree: %0.3f.\n", Velocity, Timer, Angle);
 
-                case 5U:
-                printf("The Friday\nAnd it's number is %hu\n",n);
-                break;
+     if(fabs(a =(G * Timer) / 2.0f * Velocity) < 0.0f) 
+     {
 
-                case 6U:
-                printf("The Saturday\nAnd it's number is %hu\n",n);
-                break;
+        float Result = asin((G * Timer) / 2.0f * Velocity);
 
-                case 7U:
-                printf("The Sunday\nAnd it's number is %hu\n", n);
-                break;
+        float Change = ((Result *90.0F) / 3.140F);
 
-                default:
-                return - 1l;
-                break;
-           }
-        }
+        a = Change;
 
-        else{
-            perror("You have got an error!\n");
-            return -1;
-        }
-
-    }
-
+        printf("The angle is: %0.1f degrees\n", a);
+     }
      return 0ULL;
 }
